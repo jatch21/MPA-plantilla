@@ -1,0 +1,71 @@
+/*----------------------------     LESS MIXINS    -------------------------------*/
+
+@desktop: ~"(min-width: 991px)";
+@tablet: ~"(min-width: 641px) and (max-width: 990px)";
+@mobile: ~"(max-width: 640px)";
+
+.transition( @time ) {
+	-webkit-transition: all @time;
+	-moz-transition: all @time;
+	transition: all @time;
+}
+.boxSizing( @value: border-box ) {
+	-webkit-box-sizing: @value;
+	-moz-box-sizing: @value;
+	box-sizing: @value;
+}
+.shadow(@shadows...) {
+	-webkit-box-shadow: @shadows;
+	-moz-box-shadow: @shadows;
+	box-shadow: @shadows;
+}
+.borderRadius(@pixel...) {
+	-webkit-border-radius: @pixel;
+	-moz-border-radius: @pixel;
+	border-radius: @pixel;
+}
+.ellipsis() {
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.gradientGreyStripe(@place, @percent1, @percent2) {
+	background-image: url(../images/background3.png),-moz-linear-gradient(@place, @backgroundColorStart @percent1, @backgroundColorEnd @percent2);
+	background-image: url(../images/background3.png),-webkit-gradient(@place, color-stop(@percent1,@backgroundColorStart), color-stop(@percent2,@backgroundColorEnd));
+	background-image: url(../images/background3.png),-webkit-linear-gradient(@place, @backgroundColorStart @percent1,@backgroundColorEnd @percent2);
+	background-image: url(../images/background3.png),-o-linear-gradient(@place, @backgroundColorStart @percent1,@backgroundColorEnd @percent2);
+	background-image: url(../images/background3.png),-ms-linear-gradient(@place, @backgroundColorStart @percent1,@backgroundColorEnd @percent2);
+	background-image: url(../images/background3.png),linear-gradient(@place, @backgroundColorStart @percent1,@backgroundColorEnd @percent2);
+}
+.gradientMenuIcon(@place, @icon, @color1, @color2) {
+	background-image: url('@{icon}'),-moz-linear-gradient(@place, @color1 0%, @color2 100%);
+	background-image: url('@{icon}'),-webkit-gradient(@place, color-stop(0%,@color1), color-stop(100%,@color2));
+	background-image: url('@{icon}'),-webkit-linear-gradient(@place, @color1 0%,@color2 100%);
+	background-image: url('@{icon}'),-o-linear-gradient(@place, @color1 0%,@color2 100%);
+	background-image: url('@{icon}'),-ms-linear-gradient(@place, @color1 0%,@color2 100%);
+	background-image: url('@{icon}'),linear-gradient(@place, @color1 0%,@color2 100%);
+}
+.gradientOverlay(@place, @percent1, @percent2) {
+	background-image: url(../images/bgWhite.png),-moz-linear-gradient(@place, fadeout(lighten(@backgroundColorStart, 12%), 4%) @percent1, fadeout(@backgroundColorEnd, 10%) @percent2);
+	background-image: url(../images/bgWhite.png),-webkit-gradient(@place, color-stop(@percent1,fadeout(lighten(@backgroundColorStart, 12%), 4%)), color-stop(@percent2,fadeout(@backgroundColorEnd, 10%)));
+	background-image: url(../images/bgWhite.png),-webkit-linear-gradient(@place, fadeout(lighten(@backgroundColorStart, 12%), 4%) @percent1,fadeout(@backgroundColorEnd, 10%) @percent2);
+	background-image: url(../images/bgWhite.png),-o-linear-gradient(@place, fadeout(lighten(@backgroundColorStart, 12%), 4%) @percent1,fadeout(@backgroundColorEnd, 10%) @percent2);
+	background-image: url(../images/bgWhite.png),-ms-linear-gradient(@place, fadeout(lighten(@backgroundColorStart, 12%), 4%) @percent1,fadeout(@backgroundColorEnd, 10%) @percent2);
+	background-image: url(../images/bgWhite.png),linear-gradient(@place, fadeout(lighten(@backgroundColorStart, 12%), 4%) @percent1,fadeout(@backgroundColorEnd, 10%) @percent2);
+}
+.normalTwoColorGradient(@place, @color1, @color2) {
+	background: -moz-linear-gradient(@place, @color1 0%, @color2 100%);
+	background: -webkit-gradient(@place, color-stop(0%,@color1), color-stop(100%,@color2));
+	background: -webkit-linear-gradient(@place, @color1 0%,@color2 100%);
+	background: -o-linear-gradient(@place, @color1 0%,@color2 100%);
+	background: -ms-linear-gradient(@place, @color1 0%,@color2 100%);
+	background: linear-gradient(@place, @color1 0%,@color2 100%);
+}
+.gradientNav(@place, @percent1, @percent2) {
+	background: -moz-linear-gradient(@place, @navbarColorStart @percent1, @navbarColorEnd @percent2);
+	background: -webkit-gradient(@place, color-stop(@percent1,@navbarColorStart), color-stop(@percent2,@navbarColorEnd));
+	background: -webkit-linear-gradient(@place, @navbarColorStart @percent1,@navbarColorEnd @percent2);
+	background: -o-linear-gradient(@place, @navbarColorStart @percent1,@navbarColorEnd @percent2);
+	background: -ms-linear-gradient(@place, @navbarColorStart @percent1,@navbarColorEnd @percent2);
+	background: linear-gradient(@place, @navbarColorStart @percent1,@navbarColorEnd @percent2);
+}

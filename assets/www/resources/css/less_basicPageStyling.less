@@ -1,0 +1,325 @@
+/*----------------------------------------------------------------------------------------------------*/
+/*---------------------------------------- Basic Page Styling ----------------------------------------*/
+/*----------------------------------------------------------------------------------------------------*/
+* { .boxSizing(); }
+html {
+	font-size:1em;
+	height: 100%;
+	min-height: 100%;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	font-size:1em;
+	font-family:'Roboto', sans-serif;
+	font-weight:300;
+	line-height: 1.4;
+	height: 100%;
+	min-height: 100%;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	color:@bodyTextColor;
+	.gradientGreyStripe(top, 0%, 100%);
+	background-repeat:repeat, no-repeat;
+	background-attachment:fixed;
+	background-color:@backgroundColorEnd;
+}
+h1 { font-size:1.5em;font-weight:500;padding:0.3em 0.6em;margin:0px;color:@headingColor; }
+h3 { font-size:1.15em;font-weight:500;padding:0.3em 0.6em;margin:0px;color:@headingColor; }
+label { font-size:1em;font-weight:400;padding:5px 5px 5px 0px;margin:0px;color:@labelColor;
+	.value {
+		color:@bodyTextColor;
+	}
+	.inputLabel {
+		padding:0.7em 0.25em 0em 0em;
+	}
+}
+p, td { font-size:1em;font-weight:400;padding:5px 0px 5px 0px;margin:0px; }
+ul { margin:0px;padding:0px;
+	li { list-style:none; }
+}
+
+a {
+	text-decoration:none;
+	.transition(.2s);
+	color:@bodyTextColor;
+	&:hover, &:active, &:focus {
+		color:@primary;
+		.transition(0.2s);
+		cursor:pointer;
+	}
+}
+
+audio, canvas, img, video { vertical-align: middle; }
+::-moz-selection { background: @primary; text-shadow: none; }
+::selection { background: @primary; text-shadow: none; }
+
+.primaryIconColor { fill:@primaryIcon; }
+.secondaryIconColor { fill:@secondaryIcon; }
+.whiteIconColor { fill:#FFF; }
+.redIconColor { fill:#BB3322; }
+
+object { pointer-events:none; }
+
+/*------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------- General Class Styles ----------------------------------------*/
+/*------------------------------------------------------------------------------------------------------*/
+/* Don't allow other elements to float to either side */
+.clear { clear:both; }
+
+/* Hide an element and do not keep its place */
+.hide { display:none; visibility:hidden; }
+
+/* Show an element that has been hidden */
+.show { display:block; visibility:visible; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* Hide only visually, but have it available for screenreaders */
+.visuallyhidden { border: 0;clip: rect(0 0 0 0);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px; }
+
+/* Align text to the left, center, or right */
+.left { text-align:left; }
+.center { text-align:center; }
+.right { text-align:right; }
+
+/* Control how bold the text is */
+.light { font-weight:300; }
+.normal { font-weight:400; }
+.bold { font-weight:500; }
+.bolder { font-weight:700; }
+
+/* Add or remove an underline from text */
+.underline { text-decoration:underline; }
+.noUnderline { text-decoration:none; }
+
+/* Make text italic */
+.italic { font-style:italic; }
+
+/* Make text lowercase, uppercase, or capitalize each word */
+.lowercase { text-transform:lowercase; }
+.capitalize { text-transform:capitalize; }
+.uppercase { text-transform:uppercase; }
+
+/* Remove padding or margin from element */
+.noPadding { padding:0px; }
+.noMargin { margin:0px; }
+
+/* Make text overflow to ellipsis if box is smaller than text line length */
+.ellipsis { .ellipsis(); }
+
+/* Remove border or bullets from element */
+.noBorder { border:0px none; }
+.noBullets { list-style:none; }
+
+/* Float element to the left or right */
+.floatLeft { float:left; }
+.floatRight { float:right; }
+
+/* Cursor styles: pointer or move */
+.pointer, button, .btn { cursor: pointer; }
+.move { cursor:move; }
+
+/* Use on the parent of floated elements if you do not want the parent element to collapse */
+.clearfix {
+	display: block;
+	zoom: 1;
+	&:after {
+		content: " ";
+		display: block;
+		font-size: 0;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+	}
+}
+
+/*--------------------------------------------------------------------------------------------------*/
+/*---------------------------------------- Inputs and Forms ----------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+input[type="text"], input[type="password"],
+input[type="search"], input[type="date"],
+input[type="number"], input[type="email"],
+input[type="tel"], input[type="url"], textarea {
+	margin:5px 0px;
+	padding:6px;
+	border:1px solid @borderColor;
+	font-size:0.85em;
+	outline:none;
+	color:@labelColor;
+	min-width:190px;
+	background-color:@inputBg;
+	-webkit-appearance: none;
+	.borderRadius(0px);
+	.transition(.2s);
+	&:hover {
+		border-color:@labelColor;
+		.shadow(1px 1px 2px rgba(0,0,0,0.25));
+		.transition(0.2s);
+	}
+	&:focus {
+		border-color:@primary;
+		.transition(0.2s);
+		.shadow(1px 1px 2px rgba(0, 0, 0, 0.25));
+	}
+	&:required:invalid, &:focus:required:invalid {
+		background-image: url(../images/icons/media_record_error.svg);
+		background-size:auto 65%;
+		background-position: right center;
+		background-repeat: no-repeat;
+		padding-right:1.75em;
+	}
+	&:invalid {
+		border-color:#AAA;
+		.shadow(inset 0px 0px 0px 1px #AAA);
+	}
+	&:required:valid {
+		//background-image: url(../images/icons/media_record_success.svg);
+		//background-size:auto 65%;
+		//background-position: right center;
+		//background-repeat: no-repeat;
+		padding-right:1.75em;
+		border-color: #55AA00;
+		.shadow(inset 0px 0px 0px 1px #55AA00);
+	}
+	&.errorInput {
+		border-color: #AA3333;
+		background-color: #FFEEEE;
+		color: #AA3333;
+		font-weight: 700;
+	}
+}
+input[readonly], textarea[readonly],
+input[readonly]:hover, textarea[readonly]:hover,
+input[readonly]:focus, textarea[readonly]:focus,
+input[readonly]:active, textarea[readonly]:active {
+	background-color:fadeout(@inputBg, 90%);
+	border:1px solid fadeout(@borderColor, 50%);
+	color:@labelColor;
+	.shadow(0px 0px 0px transparent);
+}
+input[type="date"] { font-family:'Roboto', sans-serif; }
+input[type="checkbox"], input[type="radio"] { margin:0px 10px 0px 0px; }
+input[type="range"] { margin:0px 5px; }
+input[type="date"], input[type="tel"] { max-width:160px; }
+textarea { resize: vertical; }
+
+/*-----------------------------------------------------------------------------------------*/
+/*---------------------------------------- Buttons ----------------------------------------*/
+/*-----------------------------------------------------------------------------------------*/
+button {
+	padding:0px 1.5em;
+	border:1px solid rgba(0,0,0,0.25);
+	background-color:@primary;
+	color:@light;
+	font-size:0.9em;
+	min-height:44px;
+	text-shadow:1px 1px 2px rgba(0,0,0,0.25);
+	.transition(0.2s);
+	&:hover {
+		background-color:darken(@primary, 10%);
+		.transition(0.2s);
+	}
+	&:active {
+		outline:none;
+		.shadow(inset 0px 0px 5px rgba(0,0,0,0.5));
+	}
+	&:focus {
+		outline:none;
+	}
+}
+.btnGroup {
+	margin:0px;
+	padding:10px 0px;
+	button {
+		border-right-width:0px;
+		float:left;
+	}
+	button:last-child, a:last-child button {
+		border-right-width:1px;
+	}
+}
+
+
+/*---------------------------------------------------------------------------------------------*/
+/*---------------------------------------- Alert Boxes ----------------------------------------*/
+/*---------------------------------------------------------------------------------------------*/
+article {
+	&.alert, &.alert-important {
+		margin:0px;
+		padding:0px;
+		h5 {
+			margin:0px;
+			padding:0.4em 1em;
+			width:100%;
+			color:@light;
+			font-size:1em;
+			button {
+				float: right;
+				color: @light;
+				width: 2.2em;
+				height: 2.2em;
+				min-height:0px;
+				text-align: center;
+				margin: -0.5em -1em 0px 0px;
+				padding:0px;
+				font-size:1em;
+				border:0px none;
+				background-color:transparent;
+				&:hover {
+					cursor:pointer;
+					background-color:transparent;
+					color:fadeout(@light, 50%);
+				}
+				&:active, &:focus {
+					outline:none;
+					background-color:transparent;
+					.shadow(0px 0px 0px transparent);
+				}
+			}
+		}
+		p {
+			background-color:@light;
+			padding:10px;
+			width:100%;
+		}
+	}
+	&.alert {
+		border:2px solid @labelColor;
+		.shadow(0px 0px 5px rgba(0,0,0,0.3));
+		h5 {
+			background-color:@labelColor;
+		}
+		p {
+			color:@labelColor;
+		}
+	}
+	&.alert-important {
+		border:2px solid @primary;
+		.shadow(0px 0px 5px darken(@primary, 5%));
+		h5 {
+			background-color:@primary;
+		}
+		p {
+			color:darken(@primary, 5%);
+		}
+	}
+}
+
+/*-----------------------------------------------------------------------------------------------*/
+/*---------------------------------------- Badge Styling ----------------------------------------*/
+/*-----------------------------------------------------------------------------------------------*/
+.badge {
+	padding:0.3em 0.5em;
+	border-radius:15px;
+	margin:0em -0.4em 0em 0.7em;
+	background-color:@light;
+	text-shadow:0px 0px 0px transparent;
+	font-weight:700;
+}
+.badge-white {
+	color:@primary;
+}
